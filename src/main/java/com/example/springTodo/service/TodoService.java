@@ -23,7 +23,18 @@ public class TodoService {
 		allTodo.add(todoList);
 	}
 	
+	//全取得機能
 	public List<TodoList> getAll(){
 		return allTodo;
+	}
+	
+	//タスクを一個だけ取得
+	public TodoList getTask(int id) {
+		for(int i = 0; i < allTodo.size(); i++) {
+			if(id == allTodo.get(i).getId()) {
+				return (TodoList)allTodo.get(i);
+			}
+		}
+		return null;
 	}
 }
