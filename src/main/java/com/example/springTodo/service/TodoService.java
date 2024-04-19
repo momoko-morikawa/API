@@ -20,6 +20,6 @@ public class TodoService {
 	
 	//TODOの追加
 	public void addTodo(TodoList todoList) {
-		
+		allTodo.add(todoList);
 	}
 }
