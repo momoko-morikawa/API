@@ -29,12 +29,21 @@ public class TodoService {
 	}
 	
 	//タスクを一個だけ取得
-	public TodoList getTask(int id) {
+	public TodoList getTodo(int id) {
 		for(int i = 0; i < allTodo.size(); i++) {
 			if(id == allTodo.get(i).getId()) {
 				return (TodoList)allTodo.get(i);
 			}
 		}
 		return null;
+	}
+	
+	//タスクを一件削除
+	public void deleteTodo(int id) {
+		for(int i = 0; i < allTodo.size(); i++) {
+			if(id == allTodo.get(i).getId()) {
+				allTodo.remove(i);
+			}
+		}
 	}
 }
