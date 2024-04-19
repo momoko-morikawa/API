@@ -46,4 +46,13 @@ public class TodoService {
 			}
 		}
 	}
+	
+	//更新機能
+	public void updateTodo(int id,TodoList todoList) {
+		for(int i = 0; i < allTodo.size(); i++) {
+			if(id == allTodo.get(i).getId()) {
+				allTodo.set(i, todoList);
+			}
+		}
+	}
 }
