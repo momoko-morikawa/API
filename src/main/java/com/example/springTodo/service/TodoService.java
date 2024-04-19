@@ -22,4 +22,8 @@ public class TodoService {
 	public void addTodo(TodoList todoList) {
 		allTodo.add(todoList);
 	}
+	
+	public List<TodoList> getAll(){
+		return allTodo;
+	}
 }
