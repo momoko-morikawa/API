@@ -13,9 +13,11 @@ public class TodoService {
 	
 	//TodoListが沢山入ったリストを作成、３つやることを入れる
 	private List<TodoList> allTodo = new ArrayList<>(Arrays.asList(
-			new TodoList(1,"メールを送る","未着手","先生にメールする"), //TodoListコンストラクタ
-			new TodoList(2,"お肉を買う","未着手","スーパーで買う"), //TodoListコンストラクタ
-			new TodoList(3,"宿題をする","進行中","算数プリント") //TodoListコンストラクタ
+			new TodoList("1001","メールを送る","未着手","先生にメールする"), 
+			new TodoList("1002","お肉を買う","未着手","スーパーで買う"), 
+			new TodoList("1003","宿題をする","進行中","算数プリント"), 
+			new TodoList("1004","宿題をする","進行中","漢字プリント"),
+			new TodoList("1005","宿題をする","完了","自主学習")
 			));
 	
 	//TODOの追加
@@ -29,9 +31,9 @@ public class TodoService {
 	}
 	
 	//タスクを一個だけ取得
-	public TodoList getTodo(int id) {
+	public TodoList getTodo(String id) {
 		for(int i = 0; i < allTodo.size(); i++) {
-			if(id == allTodo.get(i).getId()) {
+			if(allTodo.get(i).getId().equals(id)) {
 				return (TodoList)allTodo.get(i);
 			}
 		}
@@ -39,20 +41,30 @@ public class TodoService {
 	}
 	
 	//タスクを一件削除
-	public void deleteTodo(int id) {
+	public void deleteTodo(String id) {
 		for(int i = 0; i < allTodo.size(); i++) {
-			if(id == allTodo.get(i).getId()) {
+			if(allTodo.get(i).getId().equals(id)) {
 				allTodo.remove(i);
 			}
 		}
 	}
 	
 	//更新機能
-	public void updateTodo(int id,TodoList todoList) {
+	public void updateTodo(String id,TodoList todoList) {
 		for(int i = 0; i < allTodo.size(); i++) {
-			if(id == allTodo.get(i).getId()) {
+			if(allTodo.get(i).getId().equals(id)) {
 				allTodo.set(i, todoList);
 			}
 		}
+	}
+	
+	//フィルタリング機能ステータスで絞り込み
+	public List<TodoList> findByStatus(String status) {
+		for(int i = 0; i < allTodo.size(); i++) {
+			if(allTodo.get(i).getStatus().equals(status)) {
+				return (List<TodoList>) allTodo.get(i);
+			}
+		}
+		return null;
 	}
 }

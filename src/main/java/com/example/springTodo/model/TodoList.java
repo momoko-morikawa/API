@@ -1,7 +1,7 @@
 package com.example.springTodo.model;
 
 public class TodoList {
-	private int id;
+	private String id;
 	private String title;
 	private String status;
 	private String detail;
@@ -10,7 +10,7 @@ public class TodoList {
 		
 	}
 
-	public TodoList(int id, String title, String status, String detail) {//引数をフィールド代入
+	public TodoList(String id, String title, String status, String detail) {//引数をフィールド代入
 		super();
 		this.id = id;
 		this.title = title;
@@ -20,11 +20,11 @@ public class TodoList {
 	
 	//getterとsetter---------------------------------------------------------------------------
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

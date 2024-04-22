@@ -36,18 +36,24 @@ public class TodoListController {
 	
 	//一件取得
 	@GetMapping("/todos/{id}")
-	public TodoList getTodo(@PathVariable("id") int id) {
+	public TodoList getTodo(@PathVariable("id") String id) {
 		return todoService.getTodo(id);
 	}
 	
 	@DeleteMapping("/todos/{id}")
-	public void deleteTodo(@PathVariable("id") int id) {
+	public void deleteTodo(@PathVariable("id") String id) {
 		todoService.deleteTodo(id);
 	}
 	
 	@PutMapping("/todos/{id}")
-	public void updateTodo(@PathVariable("id") int id, @RequestBody TodoList todoList) {
+	public void updateTodo(@PathVariable("id") String id, @RequestBody TodoList todoList) {
 		todoService.updateTodo(id, todoList);
+	}
+	
+	//ステータスでフィルタリング
+	@GetMapping("/todos/{status}")
+	public List<TodoList> findByStatus(@PathVariable("status") String status){
+		return todoService.findByStatus(status);
 	}
 
 }
